@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	<h1>{{proj.project_name}} for {{proj.belongs_to.business_name}}</h1>
+	<label>Project Notes:</label>
+	<p>{{proj.project_notes}}</p>
+	<button><a href="{% url 'client_pro' id=proj.belongs_to.id %}">Back</a></button>
+
+</body>
+</html>

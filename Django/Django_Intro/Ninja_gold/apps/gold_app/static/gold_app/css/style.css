@@ -1,0 +1,60 @@
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		p {
+			display: inline-block;
+		}
+		.places p {
+			display: inline;
+		}
+
+		#container {
+			width: 1000px;
+			margin: 0 auto;
+			padding-top: 70px;
+			line-height: 20px;
+		}
+
+		.places {
+			width: 220px;
+			height: 220px;
+			display: inline-block;
+			border: 1px solid black;
+			text-align: center;
+			margin-top: 30px;
+			margin-left: 20px;
+		}
+
+		input {
+			display: inline-block;
+			clear: both;
+		}
+
+		form {
+			margin-top: 30px;
+		}
+
+		h3 {
+			margin-top: 50px;
+		}
+
+		#progress {
+			height: 200px;
+			width: 100%;
+			overflow: scroll;
+			border: 3px dotted black;
+			margin-top: 60px;
+		}
+
+		#progress {
+			display: inline-block;
+		}
+
+		#gold {
+			width: 50px;
+			border: 1px solid black;
+			display: inline-block;
+			text-align: center;
+			margin-left: 20px;
+		}

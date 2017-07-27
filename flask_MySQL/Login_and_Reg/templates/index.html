@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>Login and Registration</title>
+  <style type="text/css">
+    input, label {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+
+  <h2>Register or Login</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p> {{message}} </p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form action="/process" method="post">
+    <fieldset>
+      <legend>Registration Form:</legend>
+      <input type="hidden" name="action" value="register">
+      <label>First Name:</label>
+      <input type="text" name="first_name">
+      <label>Last Name:</label>
+      <input type="text" name="last_name">
+      <label>Email:</label>
+      <input type="text" name="email">
+      <label>Password:</label>
+      <input type="text" name="password">
+      <label>Confirm Password:</label>
+      <input type="text" name="passconf">
+      <input type="submit" name="submit">
+    </fieldset>
+  </form>
+
+  <hr>
+
+  <form action="/process" method="post">
+    <fieldset>
+      <legend>Log In:</legend>
+      <input type="hidden" name="action" value="login">
+      <label>Email:</label>
+      <input type="text" name="email">
+      <label>Password:</label>
+      <input type="text" name="password">
+      <input type="submit" name="submit">
+    </fieldset>
+  </form>
+
+</body>

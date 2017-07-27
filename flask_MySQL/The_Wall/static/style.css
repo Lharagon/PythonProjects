@@ -1,0 +1,107 @@
+* {
+    font-family: arial;
+}
+body {
+    background: #f1f4f8
+}
+
+input, label, textarea {
+    display: block;
+}
+
+textarea {
+    resize: none;
+    margin: 0 auto;
+}
+
+summary {
+    font-size: 9px;
+}
+
+}
+
+header {
+    height: 50px;
+    border-bottom: 2px solid black;
+}
+
+header p, header h1, header input,header form{
+    display: inline-block;
+}
+header p{
+    float: right;
+    position: relative;
+    right: 88px;
+    font-size: 20px;
+}
+header form {
+    float: right;
+}
+
+main {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+h2{
+    padding-left: 40px;
+    
+}
+
+main [type^='submit']{
+    background-color: #009e0f;
+    color: white;
+    border-radius: 5px;
+    margin-left: 505px;
+}
+
+#messageButton {
+    background-color: #2b78e4;
+    border-radius: 5px;
+    color: white;
+    width: 70px;
+    margin-left: 740px;
+    margin-top: 10px;
+}
+
+.messages {
+    width: 800px;
+    margin: 0 auto;
+    background-color: #D4DBD4;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 17px;
+    
+}
+
+.author {
+    font-weight: bold;
+    
+}
+
+.messageP {
+    margin-left: 17px;
+    font-size: 16px;
+}
+
+.commentArea {
+    width: 725px;
+    margin: 0 auto;
+    font-size: 12px;
+    margin-bottom: 17px;
+}
+
+details {
+    width: 725px;
+    margin: 0 auto;
+}
+
+.deleteMess input {
+    background-color: red;
+    display: inline;
+    float: right;
+}
+
+.deleteMess {
+    display: inline;
+}

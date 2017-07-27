@@ -1,0 +1,74 @@
+
+fieldset, form {
+	display: inline-block;
+}
+#Reg input, #Log input {
+	float: right;
+	font-size: 15px;
+	border-radius: 5px;
+}
+#Reg, #Log {
+	width: 450px;
+	font-size: 25px;
+	height: 270px;
+}
+
+#log_form {
+	vertical-align: top;
+}
+
+.book a{
+	font-size: 20px;
+}
+
+.book {
+	margin-bottom: 30px;
+}
+
+.book p {
+	margin-left: 15px;
+}
+
+.reviews a{
+	font-size: 20px;
+}
+
+.reviews {
+	border-top: 3px solid black;
+	margin-bottom: 30px;
+}
+
+.reviews p {
+	margin-left: 15px;
+}
+
+
+header h3 {
+	display: inline-block;
+}
+
+header a {
+	margin-right: 10px;
+	float: right;
+}
+
+main {
+	width: 60%;
+	display: inline-block;
+}
+
+span {
+	color: orange;
+}
+
+aside {
+	width: 29%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#bookScroll {
+	border: 2px solid black;
+	height: 130px;
+	overflow: scroll;
+}

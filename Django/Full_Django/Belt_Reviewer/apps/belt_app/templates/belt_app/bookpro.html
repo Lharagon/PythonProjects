@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books Home</title>
+		{% load staticfiles %}
+	<link rel="stylesheet"	href="{% static 'belt_app/style.css' %}">
+</head>
+<body>
+	<header>
+		<a href="{% url 'my_log_out' %}">Logout</a>
+		<a href="{% url 'my_books' %}">Home</a>
+		<h1>{{book.title}}</h1>
+		<h3>Author: {{book.author.name}}</h3>
+	</header>
+	<main>
+		<h2>Reviews:</h2>
+		{% for review in reviews %}
+			<div class="reviews">
+				<p>Rating: {{review.rating}}<span>{{review.stars}}</span></p>
+				<p><a href="{% url 'user_profile' id=review.reviewer.id%}">{{review.reviewer.alias}}</a> says: {{review.content}}</p>
+				<p>Posted on {{review.created_at}}</p>
+			</div>
+			{% if review.reviewer.id == request.session.user_id %}
+				<a href="{% url 'delete_review' id=review.id bid=book.id %}">delete</a>
+			{% endif %}
+		{% endfor %}
+	</main>
+	<aside>
+		<form action="/add_review/{{book.id}}" method="post">
+			{% csrf_token %}
+			<label>Add a Review:</label>
+			<textarea type='text' name="review" cols="20" rows="5"></textarea><br>
+			<select name="rating">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="submit" value="Submit Review">
+		</form>
+		
+	</aside>
+
+</body>
+</html>

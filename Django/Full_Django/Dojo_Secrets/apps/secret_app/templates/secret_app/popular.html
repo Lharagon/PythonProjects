@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Most Popular Secrets...</title>
+	<style type="text/css">
+		span {
+			font-weight: bolder;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Most Popular Secrets...</h1>
+
+		{% for item in secret_list %}
+			{% if item.creator.id == request.session.user_id %}
+				<p><em>{{item.secret}}</em> Time since posted: {{item.elapsed_time}} Likes 	{{item.total_likes}} <span>You posted this</span> <a href="{% url 'dell' id=item.id %}">delete</a></p>
+			{% elif this_user in item.likes.all %}
+				<p><em>{{item.secret}}</em> Time since posted: {{item.elapsed_time}} Likes 	{{item.total_likes}} <span>You already liked this</span></p>
+			{% else %}
+				<p><em>{{item.secret}}</em> Time since posted: {{item.elapsed_time}} Likes 	{{item.total_likes}} <a href="http://localhost:8000/like/{{item.id}}/{{request.session.user_id}}">Like</a></p>
+			{% endif%}
+
+		{% endfor %}
+
+</body>
+</html>

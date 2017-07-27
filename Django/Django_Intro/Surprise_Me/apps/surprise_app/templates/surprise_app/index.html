@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Surprise Me</title>
+</head>
+<body>
+	<h1>Surprise Me!</h1>
+	<form action="/process" method="post">
+		{% csrf_token %}
+		<label for="number"> Pick a number between 1 and 19:
+			<input type="number" name="number">
+		</label> <br>
+		<input type="submit" ready="Ready!">
+	</form>
+</body>
+</html>

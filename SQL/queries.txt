@@ -1,0 +1,15 @@
+SELECT * 
+FROM users;
+
+SELECT last_name
+FROM users
+WHERE id = 2 OR id = 3;
+
+SELECT *
+FROM users
+WHERE id > 2;
+
+SELECT *
+FROM users
+WHERE first_name LIKE "%e"
+ORDER BY birthday DESC;

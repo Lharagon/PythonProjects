@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Email</title>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p> {{message}} </p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h1>Email Addresses Entered:</h1>
+  <hr>
+  <table style="border:2px solid black">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+     <tbody>
+      {% for email in all_emails: %}
+        <tr>
+          <td>{{email['email']}}</td>
+          <td>{{email['created_at']}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br \>
+  <br \>
+  <form action='/remove' method='POST'>
+    <label for="email">Email Address:<input type="text" name="email" id="email"></label> 
+    <input type="submit" value="REMOVE">
+  </form>
+</body>

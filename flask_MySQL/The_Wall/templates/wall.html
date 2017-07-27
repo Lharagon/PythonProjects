@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Email</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <style type="text/css">
+ 
+  </style>
+</head>
+<body>
+	<header>
+        <h1>THE WALL</h1>
+        <p>Hello {{name}}</p>
+        <form id="logout" action="/logout" method="post">
+            <input type="submit" value="Log Out">
+        </form>
+    </header>
+<main>
+    <h2>Post a message</h2>
+    <form id="message" action="/post" method="post">
+        <input type="hidden" name="action" value="post_message">
+        <label for="description"></label>
+        <textarea form='message' placeholder="Write a message for everyone to see..." name="message" id="message" cols="100" rows="8"></textarea><br \>
+        <input id="messageButton" type="submit">
+    </form>
+
+{% for message in messages_list: %}
+    <div class="messages">
+	<p class="author">{{message['user']}} - {{message['created_at']}}</p>
+    <p class="messageP">{{message['message']}}</p>
+    {% if message['user_id']  == session['user'] %}
+        <form class="deleteMess" action="/delete" method="post">
+        <input type='hidden' name="deleteMessID" value="{{message['id']}}">
+        <input type='submit' value="delete"></form>
+    {% endif %}
+        
+		{% for comment in comment_list %}
+    		{% if comment['message_id'] == message['id']: %}
+            <div class="commentArea">
+    		<p class="author">{{comment['user']}} {{comment['created_at']}}</p>
+    			<p class="comments">{{comment['comment']}}</p>
+            </div>
+    		{% endif %}
+    	{% endfor %}
+    <details>
+			<summary>Comment</summary>
+			<form id="commentForm{{message['id']}}" action="/post" method="post">
+				<input type="hidden" name="action" value="post_comment">
+				<input type="hidden" name="mes_id" value="{{message['id']}}">
+				<label for="commentArea"></label>
+				<textarea form="commentForm{{message['id']}}" placeholder="Say something about {{name}}'s message..." name="comment" id="commentArea" cols="60" rows="2"></textarea><br \>
+				<input type="submit">
+			</form>
+	</details>
+    </div>
+{% endfor %}
+    
+    </main>
+</body>

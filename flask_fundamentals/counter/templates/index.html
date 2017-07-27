@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Counter</title>
+	<style type="text/css">
+		#container {
+			display: inline-block;
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		img {
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>Counter</h1>
+		<p>{{counter}} times</p>
+		<form action='/addTwo' method='post'>
+          <input type='submit' value='Add Two'>
+      	</form>
+      	<form action='/reset' method='post'>
+          <input type='submit' value='Zero out'>
+      	</form>
+	</div>
+</body>
+</html>

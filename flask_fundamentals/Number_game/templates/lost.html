@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Great Number Game</title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		#container {
+			width: 970px;
+			text-align: center;
+			margin: 0 auto;
+			padding-top: 70px;
+			line-height: 20px;
+		}
+
+		input {
+			display: inline-block;
+			clear: both;
+		}
+
+		form {
+			margin-top: 30px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>Welcome to the Great Number Game!</h1>
+		<p>I am thinking of a number between 1 and 100</p>
+		<p>Take a guess!</p>
+		<div id="alert">
+			<p>Too High!</p>
+		</div>
+		<form action="/check" method='post'>
+			<input type="number" name="answer" min='1' max='100'>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</body>
+</html>

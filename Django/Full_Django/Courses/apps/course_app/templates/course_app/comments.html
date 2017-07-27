@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Course Comments</title>
+
+</head>
+<body>
+	<h2>This is what other students have said...</h2>
+	<p>Name: {{course.name}}</p>
+	<p>Description: {{course.description}}</p>
+	<button><a href="http://localhost:8000/">Return to Main Page</a></button>
+	<form action="/post" method="post">
+		{% csrf_token %}
+		<label>Student Name:</label>
+		<input type="hidden" name="entry" value="{{course.id}}">
+		<input type="text" name="name"> <br>
+		<label>Comment:</label>
+		<textarea type='text' name="comment" cols="20" rows="5"></textarea><br>
+		<input type="submit" value="comment">
+	</form>
+
+	{% for comment in course.comment_set.all%}
+		<li><em>{{comment.user_name}} SAID</em>        ...{{comment.comment}}</li>
+	{% endfor %}
+</body>
+</html>

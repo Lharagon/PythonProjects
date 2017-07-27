@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>What's My Name?</title>
+	<style type="text/css">
+		form {
+			width: 300px;
+			height: 500px;
+			padding: 70px;
+			line-height: 50px;
+		}
+		p {
+			font-size: 20px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Please fill out our survey</h1>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages%}
+				<p> {{message}} </p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	<form action="/process" method="post" id="thisform">
+		Your Name: <input type="text" name="name"> <br/>
+		Dojo Location:
+		<select form="thisform" name="city">
+		  <option value="San Jose">San Jose</option>
+		  <option value="Los Angeles">Los Angeles</option>
+		  <option value="Anaheim">Anaheim</option>
+		  <option value="Alhambra">Alhambra</option>
+		</select> <br/>
+		Favorite Language:
+		<select name="language">
+		  <option value="Python">Python</option>
+		  <option value="JavaScript">JavaScript</option>
+		</select> <br/>
+		Comment(optional):
+		<input type="text" name="comment">
+		<input type='submit' value='send'>
+	</form>
+</body>
+</html>

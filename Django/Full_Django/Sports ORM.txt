@@ -1,0 +1,96 @@
+#1
+	
+context = {
+		"leagues": League.objects.all().filter(sport ="Baseball")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#2
+
+context = {
+		"leagues": League.objects.all().filter(name__contains="Women")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#3
+
+context = {
+		"leagues": League.objects.all().filter(sport__contains="Hockey")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#4
+
+context = {
+		"leagues": League.objects.all().exclude(sport="Football")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#5
+
+context = {
+		"leagues": League.objects.all().filter(name__contains="conference")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#6
+
+context = {
+		"leagues": League.objects.all().filter(name__contains="Atlantic")
+		# "teams": Team.objects.all(),
+		# "players": Player.objects.all(),
+	}
+
+#7
+
+context = {
+		# "leagues": League.objects.all()
+		"teams": Team.objects.all().filter(location = "Dallas")
+		# "players": Player.objects.all(),
+	}
+
+#8
+
+context = {
+		# "leagues": League.objects.all()
+		"teams": Team.objects.all().filter(team_name = "Raptors")
+		# "players": Player.objects.all(),
+	}
+
+#9
+
+"teams": Team.objects.all().filter(location__contains = "City")
+
+#10
+
+"teams": Team.objects.all().filter(team_name__startswith = "T")
+
+#11
+
+"teams": Team.objects.all().order_by("location")
+
+#12
+
+"teams": Team.objects.all().order_by("-team_name")
+
+#13
+
+"players": Player.objects.all().filter(last_name="Cooper")
+
+#14
+
+"players": Player.objects.all().filter(first_name="Joshua")
+
+#15
+
+"players": Player.objects.all().filter(last_name="Cooper").exclude(first_name="Joshua")
+
+#16
+
+"players": Player.objects.all().filter(first_name="Alexander")|Player.objects.all().filter(first_name="Wyatt") 
+

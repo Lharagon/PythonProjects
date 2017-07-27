@@ -1,0 +1,91 @@
+#1
+
+SELECT DATE_FORMAT(charged_datetime, '%M'), SUM(amount)
+FROM billing
+WHERE charged_datetime LIKE "%12-03-%";
+
+#2
+
+SELECT client_id, SUM(amount)
+FROM billing
+WHERE client_id = 2;
+
+#3
+
+SELECT domain_name, client_id
+FROM sites
+WHERE client_id = 10;
+
+#4
+
+SELECT client_id, COUNT(domain_name), DATE_FORMAT(created_datetime, '%M'), DATE_FORMAT(created_datetime, '%Y')
+FROM sites
+WHERE client_id = 1
+GROUP BY domain_name
+ORDER BY DATE_FORMAT(created_datetime, '%Y') ASC;
+
+#5
+
+SELECT sites.domain_name, COUNT(leads_id), DATE_FORMAT(leads.registered_datetime, '%M %d, %Y')
+FROM sites
+JOIN leads
+ON sites.site_id = leads.site_id
+WHERE DATE_FORMAT(registered_datetime, '%Y%m%d') BETWEEN  20110101 AND 20110215
+GROUP BY leads.registered_datetime
+ORDER BY leads_id
+
+#6
+
+SELECT concat(clients.first_name, ' ', clients.last_name), COUNT(leads.leads_id)
+FROM clients
+JOIN sites ON sites.client_id = clients.client_id
+JOIN leads ON sites.site_id = leads.site_id
+WHERE DATE_FORMAT(registered_datetime, '%Y%m%d') BETWEEN  20110101 AND 20111231
+GROUP BY concat(clients.first_name, ' ', clients.last_name);
+
+#7
+
+SELECT concat(clients.first_name, ' ', clients.last_name), COUNT(leads.leads_id), DATE_FORMAT(registered_datetime, '%M')
+FROM clients
+JOIN sites ON sites.client_id = clients.client_id
+JOIN leads ON sites.site_id = leads.site_id
+WHERE DATE_FORMAT(registered_datetime, '%Y%m%d') BETWEEN  20110101 AND 20110630
+GROUP BY leads.registered_datetime;
+
+#8
+
+PART I
+SELECT concat(clients.first_name, ' ', clients.last_name), sites.domain_name, COUNT(leads.leads_id), DATE_FORMAT(leads.registered_datetime, '%M %d, %Y')
+FROM clients
+JOIN sites ON sites.client_id = clients.client_id
+JOIN leads ON sites.site_id = leads.site_id
+WHERE DATE_FORMAT(registered_datetime, '%Y%m%d') BETWEEN  20110101 AND 20111231
+GROUP BY sites.domain_name
+ORDER BY concat(clients.first_name, ' ', clients.last_name);
+
+PART II
+SELECT concat(clients.first_name, ' ', clients.last_name), sites.domain_name, COUNT(leads.leads_id)
+FROM clients
+JOIN sites ON sites.client_id = clients.client_id
+JOIN leads ON sites.site_id = leads.site_id
+GROUP BY sites.domain_name
+ORDER BY concat(clients.first_name, ' ', clients.last_name);
+
+#9
+
+SELECT concat(clients.first_name, ' ', clients.last_name), SUM(billing.amount), DATE_FORMAT(billing.charged_datetime, '%M'), DATE_FORMAT(billing.charged_datetime, '%Y')
+FROM clients
+JOIN billing
+ON clients.client_id = billing.client_id
+GROUP BY billing.charged_datetime
+ORDER BY clients.client_id, DATE_FORMAT(billing.charged_datetime, '%Y'), DATE_FORMAT(billing.charged_datetime, '%m')
+
+
+#10
+
+SELECT concat(clients.first_name, ' ', clients.last_name), GROUP_CONCAT(domain_name SEPARATOR ' / ') AS Websites
+FROM clients
+JOIN sites
+ON clients.client_id = sites.client_id
+GROUP BY concat(clients.first_name, ' ', clients.last_name)
+ORDER BY clients.client_id

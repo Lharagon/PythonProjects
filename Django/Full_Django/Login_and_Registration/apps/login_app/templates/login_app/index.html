@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login & Reg | Home</title>
+	<style type="text/css">
+		body {
+			background-color: #009ac7;
+		}
+
+		input, label {
+			display: block;
+			text-align: center;
+			margin: 0 auto;
+			margin-bottom: 10px;
+		}
+		fieldset {
+			width: 200px;
+			text-align: center;
+			margin: 0 auto;
+			background-color: white;
+			border-radius: 10px
+		}
+
+		form {
+			margin: 0 auto;
+			margin-top: 30px;
+			border-radius: 5px;
+		}
+
+		legend {
+			font-size: 27px;
+			font-family: arial;
+		}
+
+		li {
+			color: white;
+			text-align: center;
+		}
+	</style>
+
+<body>
+	{% if messages %}
+		{% for message in messages %}
+		<li>{{message}}</li>
+		{% endfor %}
+	{% endif %}
+	<form action="/register" method="post">
+		{% csrf_token %}
+		<fieldset>
+			<legend>Registration</legend>
+			<label>First Name:</label>
+			<input type="text" name="first_name">
+			<label>Last Name:</label>
+			<input type="text" name="last_name">
+			<label>Email:</label>
+			<input type="text" name="email">
+			<label>Birthday:</label>
+			<input type="date" value="2017-06-01" name="birthday">
+			<label>Password:</label>
+			<input type="text" name="password">
+			<label>Confirm Password:</label>
+			<input type="text" name="passconf">
+			<input type="submit" name="">
+		</fieldset>
+	</form>
+	<form action="/login" method="post">
+		{% csrf_token %}
+		<fieldset>
+			<legend>Login</legend>
+			<label>Email:</label>
+			<input type="text" name="email">
+			<label>Password:</label>
+			<input type="text" name="password">
+			<input type="submit" value="Login">
+		</fieldset>
+	</form>
+</body>
+</html>

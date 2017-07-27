@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Clients</title>
+</head>
+<body>
+	<h1>Clients</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Business Name</th>
+				<th>email</th>
+				<th>phone</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for client in client_list %}
+				<tr>
+					<td><a href="{% url 'client_pro' id=client.id %}">{{client.business_name}}	</a></td>
+					<td>{{client.email}}</td>
+					<td>{{client.phone}}</td>
+				</tr>
+			{% endfor %}
+			</tr>
+		</tbody>
+	</table>
+	<button><a href="{% url 'add_clie' %}">Add a client</a></button>
+</body>
+</html>
